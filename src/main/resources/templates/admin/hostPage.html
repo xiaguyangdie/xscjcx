@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>成绩主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1 style="font-size: 10px">
+                    <a th:text="${name}" style="color: black;font-weight: bolder"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color: #005cbf">管理员，欢迎访问，学生成绩信息</a>
+                </h1>
+                <h1>
+                    <span>[[${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd hh:mm:ss')}]]</span>
+                </h1>
+                <a class="btn btn-primary" th:href="@{/admin/admin}">管理员首页</a>
+                <a class="btn btn-primary" th:href="@{/admin/toAddGrade}">新增</a>
+                <a class="btn btn-primary btn-group-sm" th:href="@{/loginOut}">注销</a>
+                <form class="form-inline" th:action="@{/select/courseID}" th:method="post" style="float: right">
+                    <input type="text" name="id" class="form-control" placeholder="请输入要查询的学生学号">
+                    <input type="submit" th:value="查询" class="bth bth-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>C</th>
+                    <th>JAVA</th>
+                    <th>Python</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p: ${list}">
+                    <td th:text="${p.getId()}"/>
+                    <td th:text="${p.getName()}"/>
+                    <td th:text="${p.getC()}"/>
+                    <td th:text="${p.getJAVA()}"/>
+                    <td th:text="${p.getPython()}"/>
+                    <td>
+                        <a th:href="@{/admin/toUpdateGrade(id=${p.getId()})}">修改</a> |
+                        <a th:href="@{/admin/del(id=${p.getId()})}">删除</a> |
+                        <a th:href="@{/admin/toPerson(id=${p.getId()})}">详情</a>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

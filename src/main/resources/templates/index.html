@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        body{
+            text-align: center;
+            line-height: 80px;
+            height: 80px;
+        }
+        button{
+            color: blue;
+        }
+        button:hover{
+            color: red;
+        }
+        h1:hover,h3:hover{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>首页</h1>
+<h3>欢迎登陆</h3>
+<a th:href="@{/login}">登录</a>
+<!--<div class="course">-->
+<!--    <img src="/static/img/first.png" width="400px" height="400px"/>-->
+<!--</div>-->
+</body>
+</html>

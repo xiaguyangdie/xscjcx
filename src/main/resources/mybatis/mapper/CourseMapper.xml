@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.mapper.CourseMapper">
+    <select id="getCourseList" resultType="Course">
+        select * from course;
+    </select>
+    <insert id="addCourse" parameterType="Course">
+        insert into course (cid,cname,tname,time) values (#{cid},#{cname},#{tname},#{time});
+    </insert>
+    <update id="updateCourseByCourse" parameterType="Course">
+        update course set cname=#{cname},tname=#{tname},time=#{time} where cid=#{cid};
+    </update>
+    <select id="getCourseByCid" parameterType="String" resultType="Course">
+        select * from course where cid=#{cid};
+    </select>
+    <delete id="deleteCourseByCid" parameterType="String">
+        delete from course where cid=#{cid};
+    </delete>
+    <select id="getCourseByName" parameterType="String" resultType="Course">
+        select * from course where tname=#{tname};
+    </select>
+</mapper>

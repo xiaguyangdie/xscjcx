@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新增课程记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>新增课程记录</small>
+                    <a class="btn btn-primary" th:href="@{/admin/coursePage}">返回</a>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <form th:action="@{/admin/addCourse}" method="post">
+        <div class="form-group">
+            <label>课程id：</label>
+            <input type="text" name="cid" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>课程名称：</label>
+            <input type="text" name="cname" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>任课老师：</label>
+            <input type="text" name="tname" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>上课时间：</label>
+            <input type="text" name="time" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="form-control" th:value="增加">
+        </div>
+    </form>
+</div>

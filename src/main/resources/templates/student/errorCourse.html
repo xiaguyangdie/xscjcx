@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查无成绩</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .course{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1 style="font-size: 10px">
+                    <a th:text="${errorCourse}" style="color: black;font-weight: bolder">同学</a>
+                    &nbsp;
+                    <a style="color: #005cbf">，欢迎访问</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-primary btn-group-sm" th:href="@{/loginOut}">注销</a>
+                    <a class="btn btn-primary" th:href="@{/student/hostPage}">个人首页</a>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>C</th>
+                    <th>JAVA</th>
+                    <th>Python</th>
+                    <th>平均分</th>
+                    <th>总分</th>
+                    <th>排名</th>
+                </tr>
+                </thead>
+            </table>
+            <tbody>
+            <tr>
+                <td th:text="${errorNumber}"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <td th:text="${errorCourse}"/>
+            </tr>
+            </tbody>
+        </div>
+    </div>
+</div>
+<div class="course">
+<!--    <img src="../../static/img/errorCourse.jpg" width="300px" height="200px"/>-->
+    <h3 style="color: red;font-weight: bolder">暂无成绩</h3>
+</div>
+</body>
+</html>

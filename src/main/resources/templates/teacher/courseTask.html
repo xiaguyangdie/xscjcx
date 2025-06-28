@@ -19,7 +19,34 @@
                     <a style="color: #005cbf">老师，欢迎访问，教学任务</a>
                 </h1>
                 <h1>
-                    <span>[[${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd hh:mm:ss')}]]</span>
+                    <!--<span>[[${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd hh:mm:ss')}]]</span>-->
+                    <span id="currentTime"></span>
+                    <script>
+                        // script.js
+                        function padZero(num) {
+                            return num < 10 ? '0' + num : num;
+                        }
+
+                        function formatTime(date) {
+                            const year = date.getFullYear();
+                            const month = padZero(date.getMonth() + 1); // 月份从0开始，需要加1
+                            const day = padZero(date.getDate());
+                            const hours = padZero(date.getHours());
+                            const minutes = padZero(date.getMinutes());
+                            const seconds = padZero(date.getSeconds());
+
+                            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+                        }
+
+                        function updateTime() {
+                            const now = new Date();
+                            const formattedTime = formatTime(now);
+                            document.getElementById('currentTime').textContent = `当前时间：${formattedTime}`;
+                        }
+
+                        // 初始化时立即调用一次updateTime函数，然后每隔1000毫秒（1秒）调用一次
+                        setInterval(updateTime, 1000);
+                    </script>
                 </h1>
                 <a class="btn btn-primary" th:href="@{/teacher/teacher}">教师首页</a>
                 <a class="btn btn-primary btn-group-sm" th:href="@{/loginOut}">注销</a>
